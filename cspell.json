@@ -1,0 +1,28 @@
+{
+  "version": "8.3.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    ".next",
+    "*.js",
+    "*.json",
+    "*.html",
+    "*.css",
+    "*.md",
+    "*.svg",
+    "public",
+    "*.d.ts"
+  ],
+  "files": ["src/**/*.tsx", "src/**/*.ts"],
+  "words": [
+    "backoffice",
+    "kakao",
+    "Kakao",
+    "lukemorales",
+    "Metadatas",
+    "Noti",
+    "picktoss",
+    "Uncapitalize",
+    "yxxx"
+  ]
+}
