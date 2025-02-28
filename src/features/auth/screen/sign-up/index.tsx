@@ -65,7 +65,7 @@ export default function SignUpForm() {
           </Text>
         </div>
         <form className="mt-8 flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-4 rounded-md shadow-sm">
+          <div className="space-y-4 rounded-md">
             <div>
               <Input
                 essential
