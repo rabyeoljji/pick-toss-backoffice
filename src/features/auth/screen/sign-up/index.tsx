@@ -14,14 +14,11 @@ import { useRouter } from 'next/navigation'
 // TODO: 논의 후 수정
 const signUpSchema = z
   .object({
-    username: z
-      .string()
-      .min(4, '아이디는 4글자 이상이어야 합니다')
-      .max(100, '아이디가 너무 깁니다'),
+    username: z.string().min(4, '아이디는 4글자 이상이어야 합니다').max(20, '아이디가 너무 깁니다'),
     password: z
       .string()
       .min(6, '비밀번호는 최소 6자 이상이어야 합니다')
-      .max(100, '비밀번호가 너무 깁니다'),
+      .max(20, '비밀번호가 너무 깁니다'),
     passwordConfirm: z.string(),
   })
   .refine((data) => data.password === data.passwordConfirm, {
