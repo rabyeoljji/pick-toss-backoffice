@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation'
 
 // TODO: 논의 후 수정
 const signInSchema = z.object({
-  username: z.string().min(2, '이름은 2글자 이상이어야 합니다').max(100, '이름이 너무 깁니다'),
+  username: z.string().min(4, '아이디는 4글자 이상이어야 합니다').max(100, '아이디가 너무 깁니다'),
   password: z
     .string()
     .min(6, '비밀번호는 최소 6자 이상이어야 합니다')
@@ -64,7 +64,7 @@ export default function SignInForm() {
                 essential
                 label={
                   <Label hasError={!!errors.username} htmlFor="username">
-                    이름
+                    아이디
                   </Label>
                 }
                 hasError={!!errors.username}
