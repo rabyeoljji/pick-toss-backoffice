@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
 import { z } from 'zod'
 import Label from '@/shared/components/ui/label'
 import { Input } from '@/shared/components/ui/input'
@@ -31,18 +30,16 @@ type SignUpInput = z.infer<typeof signUpSchema>
 export default function SignUpForm() {
   const router = useRouter()
   const { mutate: signUpMutate } = useSignUp()
-  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
   })
 
   const onSubmit = (data: SignUpInput) => {
-    setIsLoading(true)
     try {
       const info = { name: data.username, password: data.password }
       // API 호출 로직
@@ -52,8 +49,6 @@ export default function SignUpForm() {
     } catch (error) {
       console.error('Signup error:', error)
       alert(error)
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -116,8 +111,8 @@ export default function SignUpForm() {
             </div>
           </div>
 
-          <Button type="submit" disabled={isLoading} className="w-full">
-            {isLoading ? '처리중...' : '회원가입'}
+          <Button type="submit" disabled={isSubmitting} className="w-full">
+            {isSubmitting ? '처리중...' : '회원가입'}
           </Button>
         </form>
       </div>

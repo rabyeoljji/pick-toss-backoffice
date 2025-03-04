@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
 import { z } from 'zod'
 import Label from '@/shared/components/ui/label'
 import { Input } from '@/shared/components/ui/input'
@@ -25,18 +24,16 @@ type SignInInput = z.infer<typeof signInSchema>
 export default function SignInForm() {
   const router = useRouter()
   const { mutate: loginMutate } = useLogin()
-  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignInInput>({
     resolver: zodResolver(signInSchema),
   })
 
   const onSubmit = (data: SignInInput) => {
-    setIsLoading(true)
     try {
       const info = { name: data.username, password: data.password }
       loginMutate(info, {
@@ -44,8 +41,6 @@ export default function SignInForm() {
       })
     } catch (error) {
       console.error('Signin error:', error)
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -92,8 +87,8 @@ export default function SignInForm() {
             </div>
           </div>
 
-          <Button type="submit" disabled={isLoading} className="w-full">
-            {isLoading ? '처리중...' : '로그인'}
+          <Button type="submit" disabled={isSubmitting} className="w-full">
+            {isSubmitting ? '처리중...' : '로그인'}
           </Button>
         </form>
       </div>
