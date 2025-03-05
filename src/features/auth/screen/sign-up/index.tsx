@@ -10,7 +10,6 @@ import Text from '@/shared/components/ui/text'
 import { useSignUp } from '@/requests/auth/hooks'
 import { useRouter } from 'next/navigation'
 
-// TODO: 논의 후 수정
 const signUpSchema = z
   .object({
     username: z.string().min(4, '아이디는 4글자 이상이어야 합니다').max(20, '아이디가 너무 깁니다'),

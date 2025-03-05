@@ -124,7 +124,12 @@ const CreateNotification = () => {
               <DetailActiveField />
 
               <div className="mt-[40px] flex items-center justify-end gap-[12px]">
-                <Button onClick={closeDialog} variant={'mediumSquare'} colors={'tertiary'}>
+                <Button
+                  type="button"
+                  onClick={closeDialog}
+                  variant={'mediumSquare'}
+                  colors={'tertiary'}
+                >
                   취소
                 </Button>
                 <Button
